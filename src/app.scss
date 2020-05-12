@@ -1,0 +1,32 @@
+@import 'normalize-scss';
+@include normalize();
+
+app-root {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #aaa;
+
+  svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+
+    .eye1 {
+      fill: white;
+      stroke: black;
+      stroke-width: 3px;
+    }
+    .eye2 {
+      stroke: black;
+      stroke-width: 1px;
+    }
+    .eye3 {
+      fill: black;
+    }
+  }
+}
