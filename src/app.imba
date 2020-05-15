@@ -7,6 +7,7 @@ tag spooky-eye
 		let max_eye_movement = 0.3 * data.sz
 		let rx = data.x
 		let ry = data.y
+
 		if mx != null && my != null
 			let dx = mx - data.x
 			let dy = my - data.y
@@ -16,6 +17,7 @@ tag spooky-eye
 				dy = max_eye_movement * dy/dl
 			rx += dx
 			ry += dy
+
 		<self>
 			<svg>
 				<svg:circle.eye1 cx=(data.x) cy=(data.y) r=(data.sz)>
@@ -38,20 +40,11 @@ tag app-root
 		let l = Math.round(30 + Math.random() * 40)
 		"hsl({h}, {s}%, {l}%)"
 
-	# FIXME: This doesn't work
 	def onmousemove(event)
-		console.log("OMM")
-
-		let native_event = event._event
-		let svg = document.get-element-by-id("eyes")
-		let rect = svg.get-bounding-client-rect()
-		mx = native_event.pageX - rect.x
-		my = native_event.pageY - rect.y
-
-	def mount
-		console.log("SC")
-		# FIXME: This doesn't work
-		schedule(raf: true)
+		let element = document.get-element-by-id("eyes")
+		let rect = element.get-bounding-client-rect()
+		mx = event.page-x - rect.x
+		my = event.page-y - rect.y
 
 	def constructor
 		super
@@ -68,10 +61,7 @@ tag app-root
 			if can_place_eye(new_eye)
 				eyes.push(new_eye)
 
-		console.log(eyes)
-
 	def render
-		console.log("R")
-		<self>
+		<self#eyes :mousemove.onmousemove>
 			for eye in eyes
 				<spooky-eye data=eye mx=mx my=my>
