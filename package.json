@@ -29,7 +29,7 @@
     "imba": "^2.0.0-alpha.60",
     "normalize-scss": "^7.0.1",
     "style-loader": "^0.23.1",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.3"
   },
   "devDependencies": {
     "gh-pages": "^2.0.1",
